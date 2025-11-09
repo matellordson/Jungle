@@ -1,7 +1,3 @@
-// product brand
-// product name
-// product category
-
 import {defineField, defineType} from 'sanity'
 
 export const Product = defineType({
