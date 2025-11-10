@@ -131,11 +131,11 @@ const Price = styled.div`
 
 export const Route = createFileRoute("/product")({
   loader: async () => {
-    const API_URL =
-      import.meta.env.MODE === "development"
-        ? "/api"
-        : "https://jungle-4q6j.vercel.app";
-    const res = await fetch(`${API_URL}/product`);
+    // const API_URL =
+    //   import.meta.env.MODE === "development"
+    //     ? "/api"
+    //     : "https://jungle-4q6j.vercel.app";
+    const res = await fetch("https://jungle-4q6j.vercel.app/product");
     const json = await res.json();
     return json.data;
   },
