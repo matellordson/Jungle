@@ -24,27 +24,27 @@ const Card = styled.div`
   border: 1px solid var(--bg-border);
 `;
 
-const Brand = styled.div`
-  height: 20px;
-  width: 20px;
-  border-radius: 100%;
-  border: 3px solid var(--foreground);
-  box-shadow: var(--sm-shadow);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: absolute;
-  top: 5px;
-  right: 8px;
+// const Brand = styled.div`
+//   height: 20px;
+//   width: 20px;
+//   border-radius: 100%;
+//   border: 3px solid var(--foreground);
+//   box-shadow: var(--sm-shadow);
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   position: absolute;
+//   top: 5px;
+//   right: 8px;
 
-  & > img {
-    height: 20px;
-    width: 20px;
-    border-radius: 100%;
-    object-fit: cover;
-    object-position: center;
-  }
-`;
+//   & > img {
+//     height: 20px;
+//     width: 20px;
+//     border-radius: 100%;
+//     object-fit: cover;
+//     object-position: center;
+//   }
+// `;
 
 const Image = styled.div`
   height: 100%;
@@ -131,7 +131,11 @@ const Price = styled.div`
 
 export const Route = createFileRoute("/product")({
   loader: async () => {
-    const res = await fetch("/api/product");
+    const API_URL =
+      import.meta.env.MODE === "development"
+        ? "/api"
+        : "https://api.yourdomain.com";
+    const res = await fetch(`${API_URL}/product`);
     const json = await res.json();
     return json.data;
   },
