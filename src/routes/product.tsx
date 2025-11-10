@@ -144,6 +144,7 @@ interface dataType {
   name: string;
   category: string;
   price: number;
+  image: string;
 }
 
 function RouteComponent() {
@@ -152,11 +153,11 @@ function RouteComponent() {
     <CardWrapper>
       {data.map((product) => (
         <Card id={product.id}>
-          <Brand>
+          {/* <Brand>
             <img src="../img/addidas-logo.png" alt={product.brand} />
-          </Brand>
+          </Brand> */}
           <Image>
-            <img src="../img/addidas.webp" alt="image" />
+            <img src={product.image} alt="image" />
           </Image>
           <ContentBlur />
           <ContentWrapper>
