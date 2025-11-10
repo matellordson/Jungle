@@ -134,7 +134,7 @@ export const Route = createFileRoute("/product")({
     const API_URL =
       import.meta.env.MODE === "development"
         ? "/api"
-        : "https://api.yourdomain.com";
+        : "https://jungle-4q6j.vercel.app";
     const res = await fetch(`${API_URL}/product`);
     const json = await res.json();
     return json.data;
