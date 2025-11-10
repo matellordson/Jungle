@@ -76,10 +76,3 @@ body {
   color: var(--text-neutral);
   background-color: var(--bg-page);
 }
-
-/* @media only screen and (min-width: 992px) {
-  body {
-    max-width: 1220px;
-    margin: auto;
-  }
-} */

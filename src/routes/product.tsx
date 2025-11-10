@@ -5,6 +5,12 @@ const CardWrapper = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 3px;
+
+  @media only screen and (min-width: 992px) {
+    & {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
 `;
 
 const Card = styled.div`
@@ -124,43 +130,59 @@ const Price = styled.div`
 `;
 
 export const Route = createFileRoute("/product")({
+  loader: async () => {
+    const res = await fetch("/api/product");
+    const json = await res.json();
+    return json.data;
+  },
   component: RouteComponent,
 });
 
+interface dataType {
+  id: string;
+  brand: string;
+  name: string;
+  category: string;
+  price: number;
+}
+
 function RouteComponent() {
+  const data = Route.useLoaderData() as dataType[];
   return (
     <CardWrapper>
-      <Card>
-        <Brand>
-          <img src="../img/addidas-logo.png" alt="seller picture" />
-        </Brand>
-        <Image>
-          <img src="../img/addidas.webp" alt=" image" />
-        </Image>
-        <ContentBlur />
-        <ContentWrapper>
-          <Name>Lorem ipsum, dolor sit amet consectetur adipisicing.</Name>
-          <Category>Women's Jacket</Category>
-          <RateAndPriceWrapper>
-            <Rating>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-                height="10"
-              >
-                <path
-                  fill-rule="evenodd"
-                  d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z"
-                  clip-rule="evenodd"
-                />
-              </svg>
-              4.2
-            </Rating>
-            <Price>500</Price>
-          </RateAndPriceWrapper>
-        </ContentWrapper>
-      </Card>
+      {data.map((product) => (
+        <Card id={product.id}>
+          <Brand>
+            <img src="../img/addidas-logo.png" alt={product.brand} />
+          </Brand>
+          <Image>
+            <img src="../img/addidas.webp" alt="image" />
+          </Image>
+          <ContentBlur />
+          <ContentWrapper>
+            <Name>{product.name}</Name>
+            <Category>{product.category}</Category>
+            <RateAndPriceWrapper>
+              <Rating>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  height="10"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z"
+                    clip-rule="evenodd"
+                  />
+                </svg>
+                4.2
+              </Rating>
+              <Price>{product.price}</Price>
+            </RateAndPriceWrapper>
+          </ContentWrapper>
+        </Card>
+      ))}
     </CardWrapper>
   );
 }
