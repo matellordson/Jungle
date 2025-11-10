@@ -1,21 +1,78 @@
-:root {
-  background-color: #181818;
-  color: rgba(255, 255, 255, 0.87);
-  color-scheme: light dark;
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  font-synthesis: none;
-  font-weight: 400;
-  line-height: 1.5;
-  text-rendering: optimizeLegibility;
+@import url("https://fonts.googleapis.com/css2?family=Fredoka&display=swap");
 
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-text-size-adjust: 100%;
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
 
-@media (prefers-color-scheme: light) {
+:root {
+  --bg-page: #f2f2f2;
+  --bg-back: #e2e2e2;
+  --bg-front: #fbfbfb;
+  --bg-highlight: #efefef;
+  --bg-border: #dadada;
+  --text-light: #a0a09e;
+  --text-neutral: #787876;
+  --text-dark: #1b1b19;
+  --text-icon: #939395;
+  --text-blur: white;
+  --text-thin: 400;
+  --text-bold: 500;
+  --sm-shadow: 0 1px 3px hsla(0, 0%, 0%, 0.1);
+  --lg-shadow: 0 4px 6px hsla(0, 0%, 0%, 0.1);
+  --xl-shadow: 0 5px 15px hsla(0, 0%, 0%, 0.1);
+  --sm-radius: 10px;
+  --lg-radius: 20px;
+  --card-radius: 20px;
+  --glass-bg: rgba(0, 0, 0, 0.2);
+  --glass-blur: blur(10px);
+  --glass-border: 1px solid rgba(255, 255, 255, 0.3);
+  --page-padding: 5px;
+}
+
+/* @media (prefers-color-scheme: dark) {
   :root {
-    background-color: #f8f8f8;
-    color: #181818;
+    --bg-page: #121212;
+    --bg-back: #1b1b1b;
+    --bg-front: #1f1f1f;
+    --bg-highlight: #2a2a2a;
+    --bg-border: #2e2e2e;
+
+    --text-light: #b8b8b8;
+    --text-neutral: #cccccc;
+    --text-dark: #f5f5f5;
+    --text-icon: #a3a3a3;
+    --text-blur: rgba(255, 255, 255, 0.8);
+
+    --text-thin: 400;
+    --text-bold: 500;
+
+    --sm-shadow: 0 1px 3px hsla(0, 0%, 0%, 0.5);
+    --lg-shadow: 0 4px 6px hsla(0, 0%, 0%, 0.6);
+    --xl-shadow: 0 5px 15px hsla(0, 0%, 0%, 0.7);
+
+    --sm-radius: 10px;
+    --lg-radius: 20px;
+    --card-radius: 20px;
+
+    --glass-bg: rgba(255, 255, 255, 0.08);
+    --glass-blur: blur(10px);
+    --glass-border: 1px solid rgba(255, 255, 255, 0.15);
+
+    --page-padding: 5px;
   }
+} */
+
+body {
+  font-family: "Fredoka", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-variation-settings: "wdth" 100;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  color: var(--text-neutral);
+  background-color: var(--bg-page);
 }
